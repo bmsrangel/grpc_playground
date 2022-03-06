@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+service Todos {
+    rpc getTodos(TodoRequest) returns (TodoResponse);
+    rpc getTodoById(TodoRequest) returns (SingleTodoResponse);
+    rpc listenTodos(TodoRequest) returns (stream TodoResponse);
+}
+
+message Todo {
+    int32 id = 1;
+    string description = 2;
+    bool is_completed = 3;
+}
+
+message TodoRequest {
+    int32 id = 1;
+}
+
+message TodoResponse {
+    repeated Todo todos = 1;
+}
+
+message SingleTodoResponse {
+    Todo todo = 1;
+}

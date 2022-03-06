@@ -1,0 +1,59 @@
+grpc_server/.dart_tool/
+grpc_server/.packages
+
+# Conventional directory for build output.
+grpc_server/build/
+grpc_server/.env*
+
+
+common/.dart_tool/
+common/.packages
+common/build/
+common/pubspec.lock
+
+# Miscellaneous
+grpc_client/*.class
+grpc_client/*.log
+grpc_client/*.pyc
+grpc_client/*.swp
+grpc_client/.DS_Store
+grpc_client/.atom/
+grpc_client/.buildlog/
+grpc_client/.history
+grpc_client/.svn/
+
+# IntelliJ related
+grpc_client/*.iml
+grpc_client/*.ipr
+grpc_client/*.iws
+grpc_client/.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+grpc_client/**/doc/api/
+grpc_client/**/ios/Flutter/.last_build_id
+grpc_client/.dart_tool/
+grpc_client/.flutter-plugins
+grpc_client/.flutter-plugins-dependencies
+grpc_client/.packages
+grpc_client/.pub-cache/
+grpc_client/.pub/
+grpc_client//build/
+
+# Web related
+grpc_client/lib/generated_plugin_registrant.dart
+
+# Symbolication related
+grpc_client/grpc_client/app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+grpc_client/android/app/debug
+grpc_client/android/app/profile
+grpc_client/android/app/release

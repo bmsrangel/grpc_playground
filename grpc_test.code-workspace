@@ -1,0 +1,14 @@
+{
+  "folders": [
+    {
+      "path": "grpc_server"
+    },
+    {
+      "path": "grpc_client"
+    },
+    {
+      "path": "common"
+    }
+  ],
+  "settings": {}
+}
