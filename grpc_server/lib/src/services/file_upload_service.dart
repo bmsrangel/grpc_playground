@@ -7,14 +7,19 @@ import 'package:path/path.dart' as path;
 class FileUploadService extends FileUploadServiceBase {
   @override
   Future<UploadStatus> upload(ServiceCall call, Stream<Chunk> request) async {
-    final File file = File(path.join(
-        'public', '${DateTime.now().millisecondsSinceEpoch.toString()}.pdf'));
-    List<int> bytes = [];
-    await for (var chunk in request) {
-      bytes.addAll(chunk.content);
-    }
+    final File file = File(
+      path.join(
+        'public',
+        '${DateTime.now().millisecondsSinceEpoch.toString()}.pdf',
+      ),
+    );
     try {
-      await file.writeAsBytes(bytes);
+      final IOSink writer = file.openWrite();
+      final Stream<List<int>> dataStream =
+          request.asyncMap((chunk) => chunk.content);
+      await writer.addStream(dataStream);
+      await writer.close();
+      await writer.done;
       return UploadStatus(
           message: 'File upload successfully', code: UploadStatusCode.ok);
     } catch (e) {
