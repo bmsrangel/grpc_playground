@@ -1,5 +1,6 @@
 import 'package:grpc/grpc.dart';
 import 'package:grpc_server/src/services/albums_service.dart';
+import 'package:grpc_server/src/services/file_upload_service.dart';
 import 'package:grpc_server/src/services/greeter_service.dart';
 import 'package:grpc_server/src/services/todos_service.dart';
 
@@ -9,6 +10,7 @@ class GrpcServer {
       GreeterService(),
       TodosService(),
       AlbumsService(),
+      FileUploadService(),
     ],
     // const <Interceptor>[],
     // CodecRegistry(

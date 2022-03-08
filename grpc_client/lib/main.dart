@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grpc_client/src/config/get_it_config.dart';
 import 'package:grpc_client/src/pages/albums/albums_page.dart';
+import 'package:grpc_client/src/pages/file_upload/file_upload_page.dart';
 import 'package:grpc_client/src/pages/todos/todos_page.dart';
 import 'package:grpc_client/src/pages/todos_stream/todos_stream_page.dart';
 
@@ -66,6 +67,15 @@ class _MyHomePageState extends State<MyHomePage> {
               context,
               MaterialPageRoute(
                 builder: (context) => const AlbumsPage(),
+              ),
+            ),
+          ),
+          ListTile(
+            title: const Text('File Upload'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const FileUploadPage(),
               ),
             ),
           ),
