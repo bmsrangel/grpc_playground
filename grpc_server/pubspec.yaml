@@ -15,11 +15,9 @@ dev_dependencies:
 dependencies:
   async: ^2.8.2
   grpc: ^3.0.2
-  hasura_connect: ^4.0.0+2
   protobuf: ^2.0.1
   common:
     path: ../common
-  dotenv: ^3.0.0
 
 scripts:
   gen_hello: protoc --dart_out=grpc:lib/src/generated -Iprotos protos/hello_world.proto

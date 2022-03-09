@@ -2,16 +2,7 @@ import 'package:common/common.dart';
 import 'package:grpc/grpc.dart';
 import 'package:grpc_server/src/utils/grpc_map_converter.dart';
 
-final albums = [
-  {
-    'id': 1,
-    'title': 'Album 1',
-  },
-  {
-    'id': 2,
-    'title': 'Album 2',
-  },
-];
+import '../mocks/albums_mock.dart';
 
 class AlbumsService extends AlbumsServiceBase {
   @override

@@ -12,13 +12,13 @@ class GrpcServer {
       AlbumsService(),
       FileUploadService(),
     ],
-    // const <Interceptor>[],
-    // CodecRegistry(
-    //   codecs: [
-    //     GzipCodec(),
-    //     IdentityCodec(),
-    //   ],
-    // ),
+    const <Interceptor>[],
+    CodecRegistry(
+      codecs: [
+        GzipCodec(),
+        // IdentityCodec(),
+      ],
+    ),
   );
 
   Future<void> run() async {
