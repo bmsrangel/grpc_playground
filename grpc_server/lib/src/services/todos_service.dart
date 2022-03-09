@@ -13,8 +13,12 @@ class TodosService extends TodosServiceBase {
     final List<Map<String, dynamic>> filteredTodos =
         todos.where((todo) => todo['id'] == id).toList();
 
-    return SingleTodoResponse()
-      ..todo = Todo.fromJson(GrpcMapConverter.convert(filteredTodos.first));
+    if (filteredTodos.isNotEmpty) {
+      return SingleTodoResponse()
+        ..todo = Todo.fromJson(GrpcMapConverter.convert(filteredTodos.first));
+    } else {
+      return SingleTodoResponse();
+    }
   }
 
   @override

@@ -1,12 +1,19 @@
 {
   "folders": [
     {
+      "name": "grpc_server",
       "path": "grpc_server"
     },
     {
+      "name": "grpc_client",
       "path": "grpc_client"
     },
     {
+      "name": "grpc_client_cli",
+      "path": "grpc_client_cli"
+    },
+    {
+      "name": "common",
       "path": "common"
     }
   ],
