@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:grpc/grpc.dart';
 
-import '../../repositories/todos_repository.dart';
+import '../../channels/grpc_channel.dart';
 
 class FileUploadPage extends StatefulWidget {
   const FileUploadPage({Key? key}) : super(key: key);

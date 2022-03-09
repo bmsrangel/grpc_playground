@@ -39,6 +39,14 @@ void main(List<String> arguments) async {
     } else {
       showHelp();
     }
+  } else if (arguments[0] == 'todos_stream') {
+    final TodosRepository todosRepository = TodosRepository(channel);
+    final Stream<List<Todo>> todosStream = todosRepository.listedTodos();
+    await for (var item in todosStream) {
+      print(item);
+    }
+  } else {
+    showHelp();
   }
   await channel.shutdown();
 }

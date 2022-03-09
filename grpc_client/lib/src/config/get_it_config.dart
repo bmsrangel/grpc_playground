@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
-import 'package:grpc_client/src/repositories/todos_repository.dart';
+
+import '../channels/grpc_channel.dart';
 
 final getIt = GetIt.instance;
 
