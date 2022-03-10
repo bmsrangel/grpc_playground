@@ -19,8 +19,9 @@ class TodosRepository {
     return response.todo;
   }
 
-  Stream<List<Todo>> listedTodos() {
-    final ResponseStream response = stub.listenTodos(TodoRequest());
-    return response.asyncMap<List<Todo>>((event) => event);
+  Stream<List<Todo>> listenTodos() {
+    final ResponseStream<TodoResponse> response =
+        stub.listenTodos(TodoRequest());
+    return response.asyncMap<List<Todo>>((event) => event.todos);
   }
 }
