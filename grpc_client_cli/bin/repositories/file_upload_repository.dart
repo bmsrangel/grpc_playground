@@ -8,7 +8,6 @@ class FileUploadRepository {
     stub = FileUploadClient(channel);
   }
   final String filePath;
-  UploadStatusCode? status;
 
   final ClientChannel channel;
   late final FileUploadClient stub;
