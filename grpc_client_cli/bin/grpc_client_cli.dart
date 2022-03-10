@@ -16,7 +16,7 @@ void main(List<String> arguments) async {
       ),
     ),
   );
-  if (arguments.isNotEmpty && arguments[0] == 'albums') {
+  if (arguments[0] == 'albums') {
     final AlbumsRepository albumsRepository = AlbumsRepository(channel);
     final List<Album> albums = await albumsRepository.getAlbums();
     print(albums);
@@ -55,10 +55,17 @@ void main(List<String> arguments) async {
     } else {
       showHelp();
     }
-    await channel.shutdown();
+  } else if (arguments[0] == 'help') {
+    showHelp();
+  } else {
+    print('Invalid option!\n');
+    showHelp();
   }
+  await channel.shutdown();
 }
 
 void showHelp() {
-  print('Available options:\n\nalbums\ntodos [id]\nstream\nupload <file path>');
+  print(
+    'Available commands:\n\n\talbums\n\ttodos [id]\n\tstream\n\tupload <file path>',
+  );
 }
