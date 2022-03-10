@@ -52,11 +52,11 @@ void main(List<String> arguments) async {
       final FileUploadRepository fileUploadRepository =
           FileUploadRepository(channel, filePath);
       await fileUploadRepository.upload();
+    } else {
+      showHelp();
     }
-  } else {
-    showHelp();
+    await channel.shutdown();
   }
-  await channel.shutdown();
 }
 
 void showHelp() {

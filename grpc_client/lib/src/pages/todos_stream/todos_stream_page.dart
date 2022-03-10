@@ -2,7 +2,8 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:grpc/grpc.dart';
-import 'package:grpc_client/src/repositories/todos_repository.dart';
+
+import '../../channels/grpc_channel.dart';
 
 class TodosStreamPage extends StatefulWidget {
   const TodosStreamPage({Key? key}) : super(key: key);
