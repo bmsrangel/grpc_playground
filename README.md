@@ -67,6 +67,27 @@ message HelloReply {
 
 After compiling the `.proto` files, the messages will be regular classes with their own acessor methods and serialization methods, and the services "interfaces" the developer will implement when developing the service in the server. The client classes are also automatically generated.
 
+The compilation command for a single file is:
+
+```bash
+protoc --dart_out=grpc:lib/src/generated -Iprotos protos/hello_world.proto
+```
+
+Where:
+
+- `lib/src/generated` is the output folder where all compiled files will be found;
+- `protos/hello_world.proto` is the file to be compiled.
+
+As the project grows, it would be interesting to have a command that compiles all `.proto` files in a folder. And there is:
+
+```bash
+protoc --dart_out=grpc:lib/src/generated -Iprotos protos/*.proto
+```
+
+Where:
+
+- `protos/*.protos` will cause all files in the folder with the `.proto` extension to be compiled.
+
 ## Project Structure
 
 This repository contains some code related to gRPC studies.
