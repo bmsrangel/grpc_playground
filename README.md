@@ -31,6 +31,42 @@ gRPC uses _Protocol Buffers_ by default. From the [official documentation](https
 
 Basically protocol buffers are a combination of the definition language (`.proto` files), the code the proto compiler generates to interface with data, language-specific runtime libraries, and the serialization format for data that is written to a file (or sent across a network connection).
 
+To work with protocol buffers, first it's necessary to model the data to be serialized in a _proto file_, which is a regular text file with the `.proto` extension.
+
+The data is structured as _messages_, which are structured by a series of name-value pairs called _fields_.
+
+```protobuf
+message Todo {
+    int32 id = 1;
+    string description = 2;
+    bool is_completed = 3;
+}
+```
+
+After specified the structure, it's necessary to use a protocol buffer compliler, called `protoc`. This compiler will generate data access classes in the programming language in use from the proto definition.
+
+In these files the services can also be defined. From the documentation, this is an example of the _Hello World_ application:
+
+```protobuf
+// The greeter service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+```
+
+After compiling the `.proto` files, the messages will be regular classes with their own acessor methods and serialization methods, and the services "interfaces" the developer will implement when developing the service in the server. The client classes are also automatically generated.
+
 ## Project Structure
 
 This repository contains some code related to gRPC studies.
@@ -44,10 +80,12 @@ It is basically divided into 3 parts:
 
 This project uses the "monorepo" pattern, and which is useful because both grpc_client, grpc_client_cli and grpc_server need to access all generated files. So, instead of having a copy of these files in both applications, they were concentrated in `common` package and both clients and server depend on it.
 
-## Requirements
+## Prerequisited
 
 To run this project you'll need either Dart SDK, if you want to run only the server and CLI application, or the Flutter SDK, if you want to run both server and Flutter client.
 **PS: Flutter SDK already contains the Dart SDK, so it's not necessary to install both**.
+
+If you want to compile the `.proto` files, you will also need to install the _protobuf compiler_. The installation process is described in the [documentation](https://www.grpc.io/docs/languages/dart/quickstart/)
 
 ## Running the project
 
