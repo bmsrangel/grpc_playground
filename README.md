@@ -88,6 +88,39 @@ Where:
 
 - `protos/*.protos` will cause all files in the folder with the `.proto` extension to be compiled.
 
+It's also important to consider that it's possible to use additional data type support as described few sections below. Some of these additional types packages "come" along with the installation, such as _Duration_ and _Timestamp_.
+
+The import should be according to the example below:
+
+```protobuf
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+message LatLng {
+    float latitude = 1;
+    float longitute = 2;
+}
+
+message Location {
+    LatLng coordinate = 1;
+    google.protobuf.Timestamp created_at = 2;
+}
+
+message Tour {
+    Location location = 1;
+    google.protobuf.Duration tour_duration = 2;
+
+}
+```
+
+When compilating, these imported files must also be included in the `.proto` files list:
+
+```bash
+protoc --dart_out=grpc:lib/src/generated -Iprotos protos/*.proto google/protobuf/timestamp.proto google/protobuf/duration.proto
+```
+
 #### Scalar Value Types
 
 A list of all supported basic scalar value types can be found [this link](https://developers.google.com/protocol-buffers/docs/proto3#scalar)
