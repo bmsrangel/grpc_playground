@@ -10,7 +10,7 @@ It can be used as an alternative to REST for API constructions and one of its ma
 
 ### Introduction
 
-gRPC uses _Protocol Buffers_ as both Interface Definition Language (IDL) and as its message interchange format.
+gRPC uses [_Protocol Buffers_](https://developers.google.com/protocol-buffers/docs/overview) as both Interface Definition Language (IDL) and as its message interchange format.
 
 In gRPC, client applications can call a method on a server application on a different machine. It's just like if it were a local object from a single code base. This makes easier to create distributed services, which is one of the main applicabilities of the gRPC.
 
@@ -67,7 +67,7 @@ message HelloReply {
 
 After compiling the `.proto` files, the messages will be regular classes with their own acessor methods and serialization methods, and the services "interfaces" the developer will implement when developing the service in the server. The client classes are also automatically generated.
 
-The compilation command for a single file is:
+For Dart applications, the compilation command for a single file is:
 
 ```bash
 protoc --dart_out=grpc:lib/src/generated -Iprotos protos/hello_world.proto
@@ -88,6 +88,33 @@ Where:
 
 - `protos/*.protos` will cause all files in the folder with the `.proto` extension to be compiled.
 
+#### Scalar Value Types
+
+A list of all supported basic scalar value types can be found [this link](https://developers.google.com/protocol-buffers/docs/proto3#scalar)
+
+#### Default Values
+
+- Strings: empty string;
+- Bytes: empty bytes;
+- Bools: false;
+- Numeric: zero;
+- Enums: the **first defined enum value**, which must be 0;
+- Message fields: not defined, language dependant.
+
+#### Additional Data Type Support
+
+- [Duration](https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/duration.proto)
+- [Timestamp](https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/timestamp.proto)
+- [Interval](https://github.com/googleapis/googleapis/blob/master/google/type/interval.proto)
+- [Date](https://github.com/googleapis/googleapis/blob/master/google/type/date.proto)
+- [DayOfWeek](https://github.com/googleapis/googleapis/blob/master/google/type/dayofweek.proto)
+- [TimeOfDay](https://github.com/googleapis/googleapis/blob/master/google/type/timeofday.proto)
+- [LatLng](https://github.com/googleapis/googleapis/blob/master/google/type/latlng.proto)
+- [Money](https://github.com/googleapis/googleapis/blob/master/google/type/money.proto)
+- [PostalAddress](https://github.com/googleapis/googleapis/blob/master/google/type/postal_address.proto)
+- [Color](https://github.com/googleapis/googleapis/blob/master/google/type/color.proto)
+- [Month](https://github.com/googleapis/googleapis/blob/master/google/type/month.proto)
+
 ## Project Structure
 
 This repository contains some code related to gRPC studies.
@@ -101,7 +128,7 @@ It is basically divided into 3 parts:
 
 This project uses the "monorepo" pattern, and which is useful because both grpc_client, grpc_client_cli and grpc_server need to access all generated files. So, instead of having a copy of these files in both applications, they were concentrated in `common` package and both clients and server depend on it.
 
-## Prerequisited
+## Prerequisites
 
 To run this project you'll need either Dart SDK, if you want to run only the server and CLI application, or the Flutter SDK, if you want to run both server and Flutter client.
 **PS: Flutter SDK already contains the Dart SDK, so it's not necessary to install both**.
