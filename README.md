@@ -101,6 +101,8 @@ A list of all supported basic scalar value types can be found [this link](https:
 - Enums: the **first defined enum value**, which must be 0;
 - Message fields: not defined, language dependant.
 
+It's important to consider these default values, because Protocol Buffers do not support required fields. **All fields are all optional**. So, the validation must be done on the server/client side.
+
 #### Additional Data Type Support
 
 - [Duration](https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/duration.proto)
