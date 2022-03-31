@@ -10,7 +10,6 @@ class AlbumsService extends AlbumsServiceBase {
     ServiceCall call,
     AlbumsRequest request,
   ) async {
-    print(call);
     final albumList = albums
         .map((album) => Album.fromJson(GrpcMapConverter.convert(album)))
         .toList();
