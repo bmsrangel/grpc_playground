@@ -7,7 +7,10 @@ import '../mocks/albums_mock.dart';
 class AlbumsService extends AlbumsServiceBase {
   @override
   Future<AlbumsResponse> getAlbums(
-      ServiceCall call, AlbumsRequest request) async {
+    ServiceCall call,
+    AlbumsRequest request,
+  ) async {
+    print(call);
     final albumList = albums
         .map((album) => Album.fromJson(GrpcMapConverter.convert(album)))
         .toList();

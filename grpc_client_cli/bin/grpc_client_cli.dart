@@ -1,11 +1,21 @@
 import 'package:common/common.dart';
 import 'package:grpc/grpc.dart';
 
+import 'auth/custom_jwt_authenticator.dart';
 import 'repositories/albums_repository.dart';
 import 'repositories/file_upload_repository.dart';
 import 'repositories/todos_repository.dart';
 
 void main(List<String> arguments) async {
+  // final Map<String, dynamic> serviceAccountJson = {
+  //   'client_email': 'bmsrangel.dev@gmail.com',
+  //   'client_id': '1',
+  //   'private_key': 's3cr3t',
+  //   'type': 'service_account',
+  // };
+  // final credentials =
+  //     JwtServiceAccountAuthenticator.fromJson(serviceAccountJson);
+  final credentials = CustomJwtAuthenticator();
   final ClientChannel channel = ClientChannel(
     'localhost',
     port: 3000,
@@ -17,7 +27,11 @@ void main(List<String> arguments) async {
     ),
   );
   if (arguments[0] == 'albums') {
-    final AlbumsRepository albumsRepository = AlbumsRepository(channel);
+    // final AlbumsRepository albumsRepository = AlbumsRepository(channel);
+    final AlbumsRepository albumsRepository = AlbumsRepository(
+      channel,
+      credentials.toCallOptions,
+    );
     final List<Album> albums = await albumsRepository.getAlbums();
     print(albums);
   } else if (arguments[0] == 'todos') {

@@ -10,8 +10,7 @@
             "type": "dart",
             "program": "bin/grpc_client_cli.dart",
             "args": [
-                "todos",
-                "10"
+                "albums"
             ]
         }
     ]
